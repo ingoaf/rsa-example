@@ -81,6 +81,7 @@ func chooseSmallerCoprimeNumber(phi_n int64) (int64, error) {
 	return test_int64, nil
 }
 
+// TODO: fix
 func modularInverse(e, phi_n int64) (int64, error) {
 	t := int64(0)
 	r := phi_n
@@ -110,6 +111,7 @@ func modularInverse(e, phi_n int64) (int64, error) {
 	return int64(t), nil
 }
 
+// modularInverseSimple computes the modular inverse of e via brute force
 func modularInverseSimple(e, phi_n int64) (int64, error) {
 	e %= phi_n
 	for x := int64(1); x < phi_n; x++ {
