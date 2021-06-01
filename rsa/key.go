@@ -1,7 +1,9 @@
 package rsa
 
+import "math/big"
+
 // Key describes a private or public key, 2-dim-tuple
 type Key struct {
-	Number int64
-	Mod    int64
+	Number *big.Int
+	Mod    *big.Int
 }

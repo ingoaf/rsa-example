@@ -20,7 +20,6 @@ func StartRsa() {
 	e := encode.NewService()
 	encodedMessage := e.EncodeMessage(message)
 
-
 	fmt.Println(encodedMessage)
 }
 
