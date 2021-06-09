@@ -35,8 +35,8 @@ func generatePrivateAndPublicKey() (*Key, *Key, error) {
 
 func choosePrimes() (*big.Int, *big.Int, error) {
 	const msg = "p or q can not be represented as int64: try to choose smaller numbers"
-	p, err1 := rand.Prime(rand.Reader, 100)
-	q, err2 := rand.Prime(rand.Reader, 100)
+	p, err1 := rand.Prime(rand.Reader, 2000)
+	q, err2 := rand.Prime(rand.Reader, 2000)
 
 	if err1 != nil {
 		return nil, nil, err1
@@ -58,10 +58,21 @@ func eulersTotient(p *big.Int, q *big.Int) *big.Int {
 
 func chooseSmallerCoprimeNumber(phi_n *big.Int) (*big.Int, error) {
 
-	test, err := rand.Prime(rand.Reader, 100)
+	test, err := rand.Prime(rand.Reader, 2000)
 	if err != nil {
 		return nil, err
 	}
 
 	return test, nil
+}
+
+func encryptRune(r rune, key *Key) *big.Int {
+	message := big.NewInt(int64(r))
+	return message.Exp(message, key.Number, key.Mod)
+}
+
+func decryptRune(encryptedRune *big.Int, key *Key) rune {
+	encryptedRune = encryptedRune.Exp(encryptedRune, key.Number, key.Mod)
+
+	return rune(encryptedRune.Int64())
 }

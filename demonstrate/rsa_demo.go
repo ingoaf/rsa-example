@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/ingoaf/rsa-example/encode"
+	"github.com/ingoaf/rsa-example/rsa"
 	"github.com/tcnksm/go-input"
 )
 
@@ -20,7 +21,22 @@ func StartRsa() {
 	e := encode.NewService()
 	encodedMessage := e.EncodeMessage(message)
 
-	fmt.Println(encodedMessage)
+	fmt.Println("Encoded Message: " + string(encodedMessage) + "\n")
+
+	fmt.Println("Start Encryption...")
+
+	nk := rsa.NewService()
+	encryptedMessage := nk.EncryptMessage(encodedMessage)
+
+	fmt.Println("Encryption finished!" + "\n")
+	fmt.Println("Start Decryption...")
+
+	decryptedMessage := nk.DecryptMessage(encryptedMessage)
+
+	fmt.Println("Decryption finished!" + "\n")
+
+	fmt.Println("Decrypted Message: " + string(decryptedMessage))
+
 }
 
 // askForMessage asks the user for a message, with which the rsa-algorithm will be demonstrated
