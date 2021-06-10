@@ -1,5 +1,6 @@
 package encode
 
+// Service represents a rune <-> string encoding technique
 type Service interface {
 	EncodeMessage(string) []rune
 	DecodeMessage([]rune) string
@@ -8,6 +9,7 @@ type Service interface {
 type service struct {
 }
 
+// NewService generates a new incoding instance
 func NewService() Service {
 	return &service{}
 }
