@@ -76,7 +76,6 @@ func generatePrivateAndPublicKey() (*Key, *Key, error) {
 }
 
 func choosePrimes() (*big.Int, *big.Int, error) {
-	const msg = "p or q can not be represented as int64: try to choose smaller numbers"
 	p, err1 := rand.Prime(rand.Reader, 2000)
 	q, err2 := rand.Prime(rand.Reader, 2000)
 
