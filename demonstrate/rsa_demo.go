@@ -22,7 +22,6 @@ func StartRsa() {
 	encodedMessage := e.EncodeMessage(message)
 
 	fmt.Println("Encoded Message: " + string(encodedMessage) + "\n")
-
 	fmt.Println("Start Encryption...")
 
 	nk := rsa.NewService()
@@ -34,8 +33,7 @@ func StartRsa() {
 	decryptedMessage := nk.DecryptMessage(encryptedMessage)
 
 	fmt.Println("Decryption finished!" + "\n")
-
-	fmt.Println("Decrypted Message: " + string(decryptedMessage))
+	fmt.Println("Decrypted Message: " + e.DecodeMessage(decryptedMessage))
 
 }
 
